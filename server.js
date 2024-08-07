@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import process from "process";
+import cors from "cors";
 import connectDB from "./src/config/db.js";
 import authRoutes from './src/routes/authRoutes.js';
 import productRoutes from './src/routes/productRoutes.js';
@@ -11,6 +12,11 @@ dotenv.config();
 const app = express();
 
 connectDB().then(() => {
+  app.use(
+    cors({
+      origin: process.env.APP_ORIGIN || "http://localhost:8080",
+    }),
+  );
   app.use(express.json());
   app.use(`/docs`, swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
