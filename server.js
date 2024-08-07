@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import process from "process";
 import connectDB from "./src/config/db.js";
 import authRoutes from './src/routes/authRoutes.js';
+import productRoutes from './src/routes/productRoutes.js';
 import swaggerUi from "swagger-ui-express";
 import { swaggerDocs } from "./src/config/swagger.js";
 
@@ -14,6 +15,7 @@ connectDB().then(() => {
   app.use(`/docs`, swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
   app.use('/api/auth', authRoutes);
+  app.use('/api/products', productRoutes);
 
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

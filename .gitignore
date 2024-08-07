@@ -1,6 +1,8 @@
 # Node.js
 node_modules/
 package-lock.json
+productController_dev.js
+productRoute_dev.js
 
 # dotenv environment variables file
 .env
