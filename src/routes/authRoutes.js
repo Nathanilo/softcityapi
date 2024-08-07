@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { register } from '../controllers/authController.js';
+import { register, login } from '../controllers/authController.js';
 
 const router = Router();
 
@@ -39,11 +39,67 @@ const router = Router();
  */
 router.post('/register', register);
 
+
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Login a user
+ *     description: Endpoint to login a user
+ *     tags:
+ *       - Auth
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/LoginRequest'
+ *     responses:
+ *       201:
+ *         description: User login successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/LoginResponse'
+ *       400:
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
+router.post('/login', login);
+
 /**
  * @swagger
  * components:
  *   schemas:
  *     RegisterRequest:
+ *       type: object
+ *       required: [email, password]
+ *       properties:
+ *         email:
+ *           type: string
+ *           example: nathanielodion@gmail.com
+ *         password:
+ *           type: string
+ *           example: super-secret-password
+ *       example:
+ *         email: nathanielodion@gmail.com
+ *         password: super-secret-password
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     LoginRequest:
  *       type: object
  *       required: [email, password]
  *       properties:
@@ -71,6 +127,21 @@ router.post('/register', register);
  *           example: User registered successfully
  *       example:
  *         message: User registered successfully
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     LoginResponse:
+ *       type: object
+ *       required: [token]
+ *       properties:
+ *         token:
+ *           type: string
+ *           example: shdjhjshjsdhjsdhdbnfbshdksfbfhjfbbfdjbdbncd
+ *       example:
+ *         token: shdjhjshjsdhjsdhdbnfbshdksfbfhjfbbfdjbdbncd
  */
 
 /**
