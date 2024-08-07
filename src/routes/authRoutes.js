@@ -82,8 +82,11 @@ router.post('/login', login);
  *   schemas:
  *     RegisterRequest:
  *       type: object
- *       required: [email, password]
+ *       required: [email, username, password]
  *       properties:
+ *         username:
+ *           type: string
+ *           example: nathanielodion
  *         email:
  *           type: string
  *           example: nathanielodion@gmail.com
@@ -92,6 +95,7 @@ router.post('/login', login);
  *           example: super-secret-password
  *       example:
  *         email: nathanielodion@gmail.com
+ *         username: nathanielodion
  *         password: super-secret-password
  */
 
