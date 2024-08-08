@@ -1,8 +1,10 @@
-import express from 'express';
+import express from "express";
 import {
   createProduct,
-} from '../controllers/productController.js';
-import {authMiddleware} from '../middlewares/authMiddleware.js';
+  getProducts,
+  getProductById
+} from "../controllers/productController.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
@@ -40,7 +42,11 @@ const router = express.Router();
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.post('/', authMiddleware, createProduct);
+router.post("/", authMiddleware, createProduct);
+
+router.get("/", getProducts);
+
+router.get("/:id", getProductById);
 
 /**
  * @swagger
