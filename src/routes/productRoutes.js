@@ -2,7 +2,9 @@ import express from "express";
 import {
   createProduct,
   getProducts,
-  getProductById
+  getProductById,
+  deleteProduct,
+
 } from "../controllers/productController.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
@@ -47,6 +49,8 @@ router.post("/", authMiddleware, createProduct);
 router.get("/", getProducts);
 
 router.get("/:id", getProductById);
+
+router.delete("/:id", authMiddleware, deleteProduct);
 
 /**
  * @swagger
