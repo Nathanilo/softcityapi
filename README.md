@@ -6,7 +6,7 @@
 
 ## Steps
 
-- Clone the backend repo by running `git clone https://github.com/Nathanilo/softcitybackend`
+- Clone the backend repo by running `git clone https://github.com/Nathanilo/softcityapi`
 - Create a copy of the `.env.template` file
 - Rename the copy to `.env` and update the variables
 - Run `npm install` to install necessary dependencies
